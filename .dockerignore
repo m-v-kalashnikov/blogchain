@@ -1,0 +1,6 @@
+/backend/staticfiles/
+/backend/db.sqlite3
+/backend/mediafiles/
+/backend/logging/
+/frontend/node_modules/
+!/.env
