@@ -40,3 +40,9 @@ Entering to backend console
 ```shell script
 docker exec -it backend /bin/sh
 ```
+
+Entering to frontend console
+
+```shell script
+docker exec -it frontend /bin/sh
+```

@@ -404,3 +404,4 @@ fabric.properties
 /backend/staticfiles/
 !/.env
 /frontend/node_modules/
+/backend/auth_custom/migrations/

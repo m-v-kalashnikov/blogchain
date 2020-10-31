@@ -15,11 +15,11 @@ ADD ./backend/Pipfile* $APP_HOME/
 
 # Update and install dependencies
 RUN apk update \
-    && apk add gcc python3-dev musl-dev \
+    && apk add --virtual build-deps gcc python3-dev musl-dev jpeg-dev zlib-dev libjpeg libffi-dev openssl-dev \
     && pip install --upgrade pip \
-    && pip install pipenv \
-    && set -ex \
-    && pipenv install --deploy --system
+    && pip install --upgrade pipenv \
+    && pipenv install --dev --system \
+    && apk del build-deps
 
 # copy(add) script
 COPY ./backend/scripts/start.sh /
