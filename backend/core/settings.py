@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'django_filters',
 
-    'auth_custom.apps.AuthCustomConfig'
+    'auth_custom.apps.AuthCustomConfig',
+    'blog.apps.BlogConfig'
 ]
 
 SITE_ID = 1

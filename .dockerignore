@@ -4,4 +4,4 @@
 /backend/logging/
 /frontend/node_modules/
 !/.env
-/backend/auth_custom/migrations/
+/backend/*/migrations/0*.py
