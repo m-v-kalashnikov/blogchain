@@ -4,9 +4,16 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+factory-boy = "*"
+faker = "*"
 
 [packages]
 django = "*"
+django-rest-auth = {extras = ["with_social"], version = "*"}
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.9"

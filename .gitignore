@@ -404,3 +404,5 @@ fabric.properties
 /backend/staticfiles/
 !/.env
 /frontend/node_modules/
+/backend/*/migrations/*
+!/backend/*/migrations/__init__.py
