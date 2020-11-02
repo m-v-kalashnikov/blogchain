@@ -60,6 +60,9 @@ class Post(models.Model):
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
+    
+    def comments(self):
+        return Comment.objects.filter(post=self)
 
     was_published_recently.admin_order_field = 'created_at'
     was_published_recently.boolean = True
@@ -96,6 +99,12 @@ class Comment(models.Model):
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
 
+    def positive(self):
+        return RateOfComment.objects.filter(comment=self, opinion='P').count()
+
+    def negative(self):
+        return RateOfComment.objects.filter(comment=self, opinion='N').count()
+
     was_published_recently.admin_order_field = 'created_at'
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Было ли создано недавно?'
@@ -112,18 +121,15 @@ class RateOfComment(models.Model):
                                 related_name='blog_rate_of_comment_comment',
                                 on_delete=models.CASCADE,
                                 )
-    NO_CHOICE = '_'
     POSITIVE = 'P'
     NEGATIVE = 'N'
     OPINION = [
-        (NO_CHOICE, 'Не выбрано'),
         (POSITIVE, 'Позитивное'),
         (NEGATIVE, 'Негативное'),
     ]
     opinion = models.CharField(verbose_name='Мнение',
                                max_length=2,
                                choices=OPINION,
-                               default=NO_CHOICE,
                                )
     created_at = models.DateTimeField(verbose_name='Дата создания',
                                       auto_now_add=True,

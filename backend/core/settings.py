@@ -44,10 +44,10 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
 
     'allauth',
     'allauth.account',
+    'rest_auth',
     'rest_auth.registration',
     'django_filters',
 
@@ -72,6 +72,13 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 AUTH_USER_MODEL = 'auth_custom.User'
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S %z",
+    'DATE_FORMAT': "%d/%m/%Y",
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
