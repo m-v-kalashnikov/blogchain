@@ -57,13 +57,15 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# REST_SESSION_LOGIN = True
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = environment['DEFAULT_FROM_EMAIL']
 
 ACCOUNT_EMAIL_REQUIRED = True
 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
 ACCOUNT_UNIQUE_EMAIL = True
 
@@ -74,10 +76,14 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 AUTH_USER_MODEL = 'auth_custom.User'
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S %z",
-    'DATE_FORMAT': "%d/%m/%Y",
+    'DATETIME_FORMAT': "%d.%m.%Y %H:%M:%S",
+    'DATE_FORMAT': "%d.%m.%Y",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'PAGE_SIZE': 100
 }
 
 MIDDLEWARE = [

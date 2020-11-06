@@ -34,7 +34,7 @@ class PostFactory(DjangoModelFactory):
                          height=randint(250, 1000),
                          width=randint(250, 1000),
                          )
-    text = LazyFunction(lambda: fake.text(randint(20, 500)))
+    text = LazyFunction(lambda: fake.text(randint(200, 3000)))
     created_at = LazyFunction(lambda: now() - delta(days=365))
 
 
@@ -44,7 +44,7 @@ class CommentFactory(DjangoModelFactory):
 
     author = SubFactory(UserFactory)
     post = SubFactory(PostFactory)
-    text = LazyFunction(lambda: fake.text(randint(20, 500)))
+    text = LazyFunction(lambda: fake.text(randint(20, 1500)))
     created_at = LazyFunction(lambda: now() - delta(days=365))
 
 
