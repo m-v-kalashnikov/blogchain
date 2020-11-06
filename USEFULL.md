@@ -1,7 +1,7 @@
 Cleaning of docker
 
 ```shell script
-docker system prune
+docker system prune -y
 docker rmi $(docker images -f "dangling=true" -q)
 docker rmi $(docker images -a -q)
 docker rm $(docker ps --filter=status=exited --filter=status=created -q)
@@ -39,4 +39,10 @@ Entering to backend console
 
 ```shell script
 docker exec -it backend /bin/sh
+```
+
+Entering to frontend console
+
+```shell script
+docker exec -it frontend /bin/sh
 ```
