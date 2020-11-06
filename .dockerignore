@@ -5,3 +5,4 @@
 /frontend/node_modules/
 !/.env
 /backend/*/migrations/0*.py
+/ToDos.txt

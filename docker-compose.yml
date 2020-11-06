@@ -34,6 +34,8 @@ services:
       - backend
     networks:
       - proxy-frontend-backend
+    environment:
+      - NODE_ENV=development
 
   proxy:
     container_name: proxy

@@ -7,6 +7,10 @@ from django.utils.text import slugify
 from auth_custom.models import User
 
 
+def user_directory_path(filename):
+    return 'posts/{filename}/'.format(filename=filename)
+
+
 class Post(models.Model):
     author = models.ForeignKey(User,
                                verbose_name='Автор',
@@ -60,7 +64,7 @@ class Post(models.Model):
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
-    
+
     def comments(self):
         return Comment.objects.filter(post=self)
 
